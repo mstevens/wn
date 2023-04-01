@@ -444,44 +444,6 @@ Entry	*ep;
 }
 
 /*
- * mystrncpy( s1, s2, n) is an strncpy() which guarantees a null
- * terminated string in s1.  At most (n-1) chars are copied.
- * Returns -1 if truncation occurred and (n-1) minus number of
- * bytes copied otherwise.
- */
-
-/*
-int
-mystrncpy( s1, s2, n)
-char	*s1,
-	*s2;
-int	n;
-
-    replaced by macro fmt3( s1, n, s2, NULL, NULL)
-*/
-
-
-/*
- * mystrncat( s1, s2, n) is an strncat() which guarantees a null
- * terminated string in s1.  At most (n-1) chars TOTAL are in the
- * concatenated string.  If the original s1 had more than that
- * it is truncated.
- * Returns -1 if truncation occurred and (n-1) minus number of
- * bytes in new s1 otherwise.
- */
-
-/*
-int
-mystrncat( s1, s2, n)
-char	*s1,
-	*s2;
-int	n;
-
-     replaced by macro fmt3( s1, n, s1, s2, NULL)
-*/
-
-
-/*
  * fmt3( buf, maxlen, s1, s2, s3) concatenates s1, s2, s3 in buf and
  * guarantees a null terminated string.  At most (n-1) chars TOTAL are
  * in the concatenated string.  Returns -1 if truncation occurred and
