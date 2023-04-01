@@ -10,7 +10,6 @@
 	$version = "2.4.0";
 	$compatversion = "2.3.13";
 	$have_libs = 0;		# whether or not "LIBS=" was found in Makefile
-	$has_snprintf = 0;	# whether or not snprintf was found
 	$has_pam = 0;	# whether or not security/pam_appl.h  was found
 	$solaris_libs = "-lsocket -lnsl";
 	$solaris_ranlib = "/usr/ccs/bin/ranlib";
@@ -243,15 +242,6 @@ EOF
 	die "\n\tThe files Makefile and config.h are unchanged\n\n"
 			if !($ans =~ /^\s*[Yy]/);
 
-	open( STDIO_H, "</usr/include/stdio.h")
-				|| die "Can't open /usr/include/stdio.h";
-	while ($line = <STDIO_H>) {
-		if ( $line =~ m|snprintf|) {
-			$has_snprintf = 1;
-			last;
-		}
-	}
-
 	if ( -x "/usr/bin/md5sum" ) {
 			$md5exec = "/usr/bin/md5sum";
 	}
@@ -313,12 +303,6 @@ EOF
 		{
 			$line = "#define VERBOSELOG\t(TRUE)\n";
 			$line = "#define VERBOSELOG\t(FALSE)\n" if !$verbose;
-		}
-
-		if ($line =~ /#define HAS_SNPRINTF/)
-		{
-			$line = "#define HAS_SNPRINTF\t(TRUE)\n";
-			$line = "#define HAS_SNPRINTF\t(FALSE)\n" if !$has_snprintf;
 		}
 
 		if ($line =~ /#define WN_PAM_ENABLED/)

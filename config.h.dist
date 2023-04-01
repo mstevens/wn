@@ -877,19 +877,11 @@ typedef	int	pid_t;
 
 /* This stuff is for everyone */
 
-#if HAS_SNPRINTF
 #define Snprintf1	snprintf
 #define Snprintf2	snprintf
 #define Snprintf3	snprintf
 #define Snprintf4	snprintf
 #define Snprintf5	snprintf
-#else
-#define Snprintf1(a,b,c,x1)			sprintf(a,c,x1)
-#define Snprintf2(a,b,c,x1,x2)			sprintf(a,c,x1,x2)
-#define Snprintf3(a,b,c,x1,x2,x3)		sprintf(a,c,x1,x2,x3)
-#define Snprintf4(a,b,c,x1,x2,x3,x4)		sprintf(a,c,x1,x2,x3,x4)
-#define Snprintf5(a,b,c,x1,x2,x3,x4,x5)		sprintf(a,c,x1,x2,x3,x4,x5)
-#endif
 
 #ifndef _WN_SIGCHLD
 #ifdef	BSD_LIKE
