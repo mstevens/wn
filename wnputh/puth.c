@@ -42,26 +42,20 @@
 extern char *optarg;
 extern int optind;
 
-extern char	*getenv();
-
-static void	put_abort( ),
-		success( ),
-		puth_timeout();
-
+static void success(char *msg, char *msg2);
+static void put_abort(char *msg, char *msg2);
+static void	puth_timeout();
 
 #ifdef DEBUG
-static void	log_debug();
+static void log_debug(char *msg, char *msg2);
 #endif
 
-static int	copy_file( char *, char *),
-		mystrncpy( char *, char *, int),
-		mystrncat( char *, char *, int);
+static int copy_file(char *srcfile, char *destfile);
+static int mystrncpy(char *s1, char *s2, int n);
+static int mystrncat(char *s1, char *s2, int n);
 
 int
-main( argc, argv)
-int	argc;
-char	*argv[];
-
+main(int argc, char *argv[])
 {
 	register char	*cp;
 
@@ -159,9 +153,7 @@ char	*argv[];
 /* Copy file, return 0 on success, (-1) on failure */
 
 static int
-copy_file( srcfile, destfile)
-char	*srcfile,
-	*destfile;
+copy_file(char *srcfile, char *destfile)
 {
 
 	FILE	*sfp,
@@ -209,10 +201,7 @@ char	*srcfile,
  */
 
 static int
-mystrncpy( s1, s2, n)
-char	*s1,
-	*s2;
-int	n;
+mystrncpy(char *s1, char *s2, int n)
 {
 	register char	*cp1,
 			*cp2;
@@ -241,10 +230,7 @@ int	n;
  */
 
 static int
-mystrncat( s1, s2, n)
-char	*s1,
-	*s2;
-int	n;
+mystrncat(char *s1, char *s2, int n)
 {
 	register char	*cp1,
 			*cp2;
@@ -284,9 +270,7 @@ puth_timeout()
 
 
 static void
-put_abort( msg, msg2)
-char 	*msg,
-	*msg2;
+put_abort(char *msg, char *msg2)
 {
 	char buf[MIDLEN];
 
@@ -305,9 +289,7 @@ char 	*msg,
 }
 
 static void
-success( msg, msg2)
-char 	*msg,
-	*msg2;
+success(char *msg, char *msg2)
 {
 	char *status;
 	char buf[MIDLEN];
@@ -328,9 +310,7 @@ char 	*msg,
 
 #ifdef DEBUG
 static void
-log_debug( msg, msg2)
-char	*msg,
-	*msg2;
+log_debug(char *msg, char *msg2)
 {
 	time_t	clock;
 	struct tm *ltm;

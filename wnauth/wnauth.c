@@ -60,8 +60,9 @@ static void	chopws(),
 		mkdigest(),
 		getpath();
 
-static int	checkpw( ),
-		mystrncpy( ),
+static int checkpw(char *user, char *pw, char *pwpath, char *grppath);
+
+static int mystrncpy( ),
 		mystrncat( ),
 		ingroup( );
 
@@ -79,10 +80,7 @@ int		nis_pw = FALSE;
 struct passwd	*passwd;
 
 int
-main( argc, argv)
-int	argc;
-char	*argv[];
-
+main(int argc, char *argv[])
 {
 	register char	*cp;
 
@@ -205,11 +203,7 @@ char	*argv[];
 }
 
 static int
-checkpw( user, pw, pwpath, grppath)
-char	*user,
-	*pw,
-	*pwpath,
-	*grppath;
+checkpw(char *user, char *pw, char *pwpath, char *grppath)
 {
 	register char	*cp,
 			*cp2;
