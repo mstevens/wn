@@ -1,6 +1,15 @@
+# wn web server
 
-The WN home pages are at http://www.wnserver.org/ (Europe) and
-http://hopf.math.nwu.edu/ (U.S.) and information
+## Intro
+
+This is an old web server I always had a soft spot for.
+
+I (Michael) did not write this, but I couldn't find a copy so I wanted to put it on github somewhere.
+
+## Original README
+
+The WN home pages are at <http://www.wnserver.org/> (Europe) and
+<http://hopf.math.nwu.edu/> (U.S.) and information
 about the latest version can be found there.
 
 This version of WN comes with a "configure" perl script.  See the
@@ -15,4 +24,4 @@ recommend reading at least the "Installation and Setup" chapter of the
 users' guide. The quickest way to do this is with a Web browser and
 the URL
 
-	file:/path/2/WN_src/docs/manual.html
+ file:/path/2/WN_src/docs/manual.html
