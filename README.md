@@ -6,6 +6,8 @@ This is an old web server I always had a soft spot for.
 
 I (Michael) did not write this, but I couldn't find a copy so I wanted to put it on github somewhere.
 
+This is a mildly hacked about with version.
+
 ## Original README
 
 The WN home pages are at <http://www.wnserver.org/> (Europe) and
