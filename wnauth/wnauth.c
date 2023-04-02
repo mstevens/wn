@@ -52,19 +52,20 @@ static char	group[MIDLEN],
 		realm[SMALLLEN],
 		*group_list[MAXGROUPS + 1];
 
-
-static void	chopws(),
-		authwn_timeout(),
+static void log_auth(char *msg, char *msg2);
+static void getpath(char *path, char *file);
+static void	authwn_timeout(),
 		encode(),
-		log_auth(),
-		mkdigest(),
-		getpath();
+		mkdigest();
 
 static int checkpw(char *user, char *pw, char *pwpath, char *grppath);
 
-static int mystrncpy( ),
-		mystrncat( ),
-		ingroup( );
+static int mystrncat(char *s1, char *s2, int n);
+
+static int mystrncpy(char *s1, char *s2, int n);
+static void chopws(char *line);
+
+static int ingroup( );
 
 #ifdef DBM_AUTH
 extern datum	dbm_fetch();
@@ -368,10 +369,7 @@ checkpw(char *user, char *pw, char *pwpath, char *grppath)
  */
 
 static void 
-mkdigest (out, in, in_len)
-char	*out,
-	*in;
-unsigned in_len;
+mkdigest (char *out, char *in, unsigned int in_len)
 {
 	unsigned i;
 	MD5_CTX context;
@@ -473,8 +471,7 @@ char	*list,
  */
 
 static void
-chopws( line)
-char *line;
+chopws(char *line)
 {
 	register char	*cp;
 
@@ -493,9 +490,7 @@ char *line;
 
 
 static void
-getpath( path, file)
-char	*path,
-	*file;
+getpath(char *path, char *file)
 {
 	char	*cp,
 		buf[SMALLLEN];
@@ -539,10 +534,7 @@ char	*path,
  */
 
 static int
-mystrncpy( s1, s2, n)
-char	*s1,
-	*s2;
-int	n;
+mystrncpy(char *s1, char *s2, int n)
 {
 	register char	*cp1,
 			*cp2;
@@ -571,10 +563,7 @@ int	n;
  */
 
 static int
-mystrncat( s1, s2, n)
-char	*s1,
-	*s2;
-int	n;
+mystrncat(char *s1, char *s2, int n)
 {
 	register char	*cp1,
 			*cp2;
@@ -614,9 +603,7 @@ authwn_timeout()
 }
 
 static void
-log_auth( msg, msg2)
-char	*msg,
-	*msg2;
+log_auth(char *msg, char *msg2)
 {
 	time_t	clock;
 	struct tm *ltm;

@@ -129,8 +129,7 @@ char	*bufcoded,
  */
 
 int
-chkauth( ip )
-Request	*ip;
+chkauth(Request *ip )
 {
 	register char	*cp,
 			*cp2;

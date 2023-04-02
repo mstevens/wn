@@ -47,9 +47,7 @@ extern int optind;
 
 
 void
-init( argc, argv)
-int	argc;
-char	*argv[];
+init(int argc, char *argv[])
 {
 	int	c,
 		dflg = FALSE,

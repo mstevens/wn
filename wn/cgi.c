@@ -47,8 +47,7 @@ static CGI_con_data	*cgiconp = NULL;
  */
 
 void
-sendcgi( ip)
-Request	*ip;
+sendcgi(Request *ip)
 {
 #if (! FORBID_CGI)
 	FILE	*fp;
@@ -187,8 +186,7 @@ Request	*ip;
  */
 
 void
-do_put( ip)
-Request	*ip;
+do_put(Request *ip)
 {
 #if (! FORBID_CGI)
 	FILE	*fp;
@@ -307,9 +305,7 @@ Request	*ip;
  */
 
 void
-cgi_env( ip, set_size)
-Request	*ip;
-int	set_size;
+cgi_env(Request *ip, int set_size)
 {
 	register char	*cp;
 
@@ -466,8 +462,7 @@ int	set_size;
 }
 
 static void
-pathinfo_env( ip )
-Request	*ip;
+pathinfo_env(Request *ip)
 {
 	if ( *(ip->pathinfo) && (cgip != NULL)) {
 		mystrncpy( cgip->pathinfo, "PATH_INFO=", MIDLEN);
@@ -481,8 +476,7 @@ Request	*ip;
 }
 
 static void
-full_cgi_env( ip )
-Request	*ip;
+full_cgi_env(Request *ip)
 {
 	char	*cp;
 
@@ -645,13 +639,7 @@ Request	*ip;
 }
 
 static void
-cgi_headers( fp, cgibuf, location, bufptr, buflen)
-FILE	*fp;
-char	*cgibuf,
-	*location,
-	**bufptr;
-
-int	*buflen;
+cgi_headers(FILE *fp, char *cgibuf, char *location, char **bufptr, int *buflen)
 {
 	register char	*beginl,
 			*endl,
